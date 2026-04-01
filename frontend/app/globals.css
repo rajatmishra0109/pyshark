@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #0a0e1a;
+  --bg-surface: #111827;
+  --bg-elevated: #1a2235;
+  --bg-hover: #1e2a40;
+  --border: #1e2d40;
+  --border-subtle: #162030;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #475569;
+  --text-disabled: #2d3748;
+  --accent-blue: #3b82f6;
+  --accent-blue-dim: #1d4ed8;
+  --accent-cyan: #06b6d4;
+  --accent-cyan-dim: #0891b2;
+  --severity-low: #22c55e;
+  --severity-low-bg: #052e16;
+  --severity-medium: #f59e0b;
+  --severity-medium-bg: #1c1007;
+  --severity-high: #ef4444;
+  --severity-high-bg: #1c0505;
+  --severity-critical: #a855f7;
+  --severity-crit-bg: #1a0a2e;
+  --chart-1: #3b82f6;
+  --chart-2: #06b6d4;
+  --chart-3: #22c55e;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+}
+
+[data-theme='light'] {
+  --bg-base: #f4f7fb;
+  --bg-surface: #ffffff;
+  --bg-elevated: #eef3fb;
+  --bg-hover: #e3ebf7;
+  --border: #d1deee;
+  --border-subtle: #e2ebf8;
+  --text-primary: #0b1b32;
+  --text-secondary: #42556f;
+  --text-tertiary: #5d7088;
+  --text-disabled: #95a5bb;
+  --accent-blue: #2563eb;
+  --accent-blue-dim: #1d4ed8;
+  --accent-cyan: #0891b2;
+  --accent-cyan-dim: #0e7490;
+  --severity-low: #15803d;
+  --severity-low-bg: #dcfce7;
+  --severity-medium: #b45309;
+  --severity-medium-bg: #fef3c7;
+  --severity-high: #b91c1c;
+  --severity-high-bg: #fee2e2;
+  --severity-critical: #7c3aed;
+  --severity-crit-bg: #ede9fe;
+  --chart-1: #2563eb;
+  --chart-2: #0891b2;
+  --chart-3: #16a34a;
+  --chart-4: #d97706;
+  --chart-5: #dc2626;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border) !important;
+}
+
+.recharts-text {
+  fill: var(--text-tertiary) !important;
+  font-size: 11px !important;
+}
+
+.recharts-tooltip-wrapper {
+  z-index: 50;
+}
+
+@keyframes crit-pulse {
+  0%,
+  100% {
+    background: var(--severity-crit-bg);
+  }
+  50% {
+    background: transparent;
+  }
+}
