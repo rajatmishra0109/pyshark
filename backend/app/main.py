@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import random
 from datetime import datetime, timedelta, timezone
 from typing import Any
@@ -10,9 +11,19 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="XTI-SOC Backend", version="1.0.0")
 
+def _cors_origins() -> list[str]:
+    configured = os.getenv("CORS_ORIGINS", "")
+    if configured.strip():
+                return [origin.strip() for origin in configured.split(",") if origin.strip()]
+    frontend_url = os.getenv("FRONTEND_URL", "").strip()
+    origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    if frontend_url:
+        origins.append(frontend_url)
+    return origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

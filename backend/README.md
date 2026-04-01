@@ -9,6 +9,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+## Render Deployment
+
+Set the Render service root directory to `backend` and use:
+
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+
+The file [`runtime.txt`](runtime.txt) pins Python to 3.12.8 so Render avoids the Python 3.14 / pydantic-core build issue.
+
 ## Endpoints
 
 - GET `/health`
